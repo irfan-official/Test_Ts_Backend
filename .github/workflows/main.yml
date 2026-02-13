@@ -46,4 +46,4 @@ jobs:
             npm run build
 
             echo "🔹 restart the process with pm2"
-            /home/ubuntu/.nvm/versions/node/v22.20.0/bin/pm2 restart 0
+            /home/ubuntu/.nvm/versions/node/v22.20.0/bin/pm2 restart

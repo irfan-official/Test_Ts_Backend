@@ -23,7 +23,7 @@ app.get("/", (req: Request, res: Response) => {
   return res.status(httpStatus.OK).json({
     success: true,
     code: httpStatus.OK,
-    message: "Final Server is running ... ok irfan success All is ok",
+    message: "Server is running ... check the changes",
     availablePath: moduleRoutes,
   });
 });
