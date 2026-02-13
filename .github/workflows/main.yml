@@ -28,7 +28,7 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
             echo "🔹 Navigate to backend folder"
-            cd /var/www/v2backend
+            cd /var/www/Test_Ts_Backend
 
             echo "🔹 Check versions (Debugging)"
             node -v
