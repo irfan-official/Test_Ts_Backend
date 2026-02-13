@@ -1,4 +1,4 @@
-name: CI/CD Pipeline for Bikelog Backend
+name: CI/CD Pipeline for Ts backend test
 
 on:
   push:
