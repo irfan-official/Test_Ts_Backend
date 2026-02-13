@@ -40,4 +40,10 @@ jobs:
             git pull origin main
 
             echo "🔹 Install dependencies"
-            npm run start
+            npm install
+
+            echo "🔹 build the dist file"
+            npm run build
+
+            echo "🔹 restart the process with pm2"
+            /home/ubuntu/.nvm/versions/node/v22.20.0/bin/pm2 restart ts-backend
