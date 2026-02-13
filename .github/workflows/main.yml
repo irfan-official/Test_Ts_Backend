@@ -24,8 +24,10 @@ jobs:
           script: |
             set -e
             # 1. Load NVM environment
-            export NVM_DIR="/root/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export NVM_DIR="/home/ubuntu/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+            nvm use 22.20.0
 
             echo "🔹 Navigate to backend folder"
             cd /var/www/Test_Ts_Backend
