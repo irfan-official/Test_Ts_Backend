@@ -1,0 +1,41 @@
+name: CI/CD Pipeline for Bikelog Backend
+
+on:
+  push:
+    branches:
+      - main # This triggers the workflow whenever code is merged/pushed to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repo (just for reference, not needed on EC2)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: SSH to Server and deploy
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST_IP }} # Server public IP
+          username: ${{ secrets.USER }} # Server username (usually ubuntu)
+          key: ${{ secrets.SSH_KEY }} # SSH private key (from GitHub secrets)
+          script: |
+            set -e
+            # 1. Load NVM environment
+            export NVM_DIR="/root/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            echo "🔹 Navigate to backend folder"
+            cd /var/www/v2backend
+
+            echo "🔹 Check versions (Debugging)"
+            node -v
+            npm -v
+
+            echo "🔹 Pull latest code"
+            git pull origin main
+
+            echo "🔹 Install dependencies"
+            npm run start
